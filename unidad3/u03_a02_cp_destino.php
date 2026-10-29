@@ -4,7 +4,7 @@ if(!isset($_POST['nombre'])){
 
     $mensaje= "Debes rellenar el formulario";
     
-    header("location:index.php?mensaje=$mensaje");
+    header("location:index.php?mensaje". urldecode($mensaje));
 }
 elseif(empty($_POST["nombre"]) ||
 empty($_POST["apellidos"]) ||
@@ -14,12 +14,12 @@ empty($_POST["genero"]) ||
 is_null($_POST["genero"])){
 
 $mensaje= "Debes rellenar todos los campos del formulario";
-    header("location:index.php?mensaje=$mensaje");
+    header("location:index.php?mensaje=". urldecode($mensaje));
 
 }
 elseif(!isset($_POST['acepto']) || empty($_POST['acepto'])){
-$mensaje= 'Debes aceptar las políticas';
-    header("location:index.php?mensaje=$mensaje");
+$mensaje = 'Debes aceptar las políticas';
+    header("location:index.php?mensaje=". urldecode($mensaje));
 }
 
 elseif(preg_match('/^[0-9]{5}-[\p{L} ]+$/u', $_POST['poblacion'])){
