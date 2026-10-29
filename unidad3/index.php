@@ -17,7 +17,7 @@ if(isset($_GET['mensaje'])){
         Nombre: <input type="text" name="nombre"/><br/>
         Apellidos: <input type="text" name="apellidos"/><br/>
         Dirección: <input type="text" name="direccion"/><br/>
-        Población: <input type="text" name="pobacion"/><br/>
+        Población: <input type="text" name="poblacion"/><br/>
         Género: Masculino <input type="radio" name="genero" value="masculino"/>
         Femenino <input type="radio" name="genero" value="femenino"/><br/>
         He leído y acepto las condicions de la página web
