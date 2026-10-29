@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Conversión de medidas</h1>
+    <form action="medidas.php" method="post">
+        <label for="">
+            Cantidad: <input type="number" name="cantidad" id="cantidad">
+        </label>
+        <br>
+        <label for="">
+        Convertir de: 
+        Pulgadas<input type="radio" name="valorInicial" value="pulgadas">
+        Pies<input type="radio" name="valorInicial" value="pies">
+        Yardas</label><input type="radio" name="valorInicial" value="yardas">
+        Millas</label><input type="radio" name="valorInicial" value="millas">
+        </label>
+        <br>
+        <label for="">
+            Convertir a: 
+            Centímetros<input type="radio" name="valorConversion" value="centimetros">
+            Metros<input type="radio" name="valorConversion" value="metros">
+            Kilometros<input type="radio" name="valorConversion" value="kilometros">
+        </label>
+        <br>
+        <button type="submit" name="envio">Enviar</button>
+    </form>
+</body>
+
+</html>

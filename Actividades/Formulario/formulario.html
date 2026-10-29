@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mi formulario</h1>
+    <form action="ejemplo04.php" method="GET">
+    Nombre: <input type="text" name="nombre"/><br />
+    Apellidos: <input type="text" name="apellidos"/> <br />
+    <label>Deseo ser atendido/a en: </label>
+    <input type="radio" name="idioma" value="es"/> Castellano
+    <input type="radio" name="idioma" value="en"/> English <br />
+    <input type="checkbox" name="interes[]" value="Deportes"/> Deportes<br />
+    <input type="checkbox" name="interes[]" value="Música"/> Música<br />
+    <input type="checkbox" name="interes[]" value="Libros"/> Libros<br />
+    <input type="checkbox" name="interes[]" value="Cine"/> Cine<br />
+    <label>Mis intereses:</label><br />
+    <select name="interes1[]" size="4" multiple>
+        <option value="Deportes">Deportes</option>
+        <option value="Música">Música</option>
+        <option value="Libros">Libros</option>
+        <option value="Cine">Cine</option>
+    </select>
+    <button type="submit" name="enviar">Enviar</button>
+    </form>
+</body>
+</html>
