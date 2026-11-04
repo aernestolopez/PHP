@@ -1,0 +1,118 @@
+/* ==========================================================================
+   FORMULARIOS (Input, Textarea, Select, Label, Button)
+   ========================================================================== */
+
+/* Contenedor básico para estructurar el formulario */
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Elementos de bloque para etiquetas y campos */
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Estilo unificado para campos de texto, selección y áreas de texto */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form input[type="tel"],
+form input[type="url"],
+form input[type="date"],
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #fff;
+}
+
+/* Efecto Focus (cuando el usuario hace clic en el campo) */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+  outline: none;
+}
+
+/* Checkboxes y Radios (alineación horizontal) */
+form input[type="checkbox"],
+form input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.1);
+}
+
+/* Estilo para los botones */
+form button,
+form input[type="submit"] {
+  display: inline-block;
+  background-color: #0066cc;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+form button:hover,
+form input[type="submit"]:hover {
+  background-color: #0052a3;
+}
+
+/* ==========================================================================
+   TABLAS 
+   ========================================================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-align: left;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden; /* Mantiene las esquinas redondeadas */
+}
+
+/* Encabezados de la tabla */
+table th {
+  background-color: #f4f6f8;
+  color: #333;
+  padding: 14px 16px;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Celdas del cuerpo */
+table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+
+/* Filas alternas (Efecto cebra) */
+table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* Efecto hover al pasar el ratón por encima de una fila */
+table tr:hover {
+  background-color: #f1f5f9;
+}
