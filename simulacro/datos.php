@@ -22,5 +22,4 @@ $productos = [
         "stock"=> "10",
         "categoria"=>"Periféricos"
     ],
-]
-?>
+];
