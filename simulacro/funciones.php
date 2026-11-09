@@ -14,15 +14,18 @@ function comprobarExistencias($productos, $codigo, $cantPedido){
 foreach($productos as $producto){
     if($producto["codigo"] === $codigo){
         if($producto["stock"] > 0 && $producto["stock"] >= $cantPedido){
-            $mensaje = "Hay stock";
-            return $mensaje;
+            //$mensaje = "Hay stock";
+            //return $mensaje;
+            return 1;
             
         }else{
-            $mensaje = "No hay stock";
-            return $mensaje;
+            //$mensaje = "No hay stock";
+            //return $mensaje;
+            return -1;
         }
     }
-    return null;
+    //return null;
+    return -1;
 }
 
 }
@@ -47,23 +50,33 @@ function precioSubtotal($productos, $codigo, $cantPedido){
     return null;
 }
 
+function tipoDescuento($tipoUsuario){
+    if($tipoUsuario ==="premium"){
+        $mensaje = "Descuento del 10%";
+        return $mensaje;
+    }else if($tipoUsuario === "normal"){
+        $mensaje = "Sin descuento";
+        return $mensaje;
+    }
+    return null;
+}
 function descuento($precioTotal, $tipoUsuario){
     if($tipoUsuario === "premium"){
        $precioDescontado = $precioTotal * 0.9;
         return $precioDescontado;
-    }else{
+    }else if($tipoUsuario === "normal"){
         return $precioTotal;
     }
+    return null;
 }
 
-function procesarPedido($tipoUsuario, $precioTotal, $subtotal){
-
-
-
-//    return [
-//        'subtotal'  => $subtotal,
-//        'descuento' => $descuento,
-//        'total'     => $total
-//    ];
+function procesarPedido($descuento, $total, $subtotal){
+    return [
+        'subtotal'  => $subtotal,
+        'descuento' => $descuento,
+        'total'     => $total
+    ];
 
 }
+
+?>

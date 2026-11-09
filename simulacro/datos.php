@@ -30,3 +30,4 @@ $productos = [
         "categoria" => "Accesorios"
     ]
 ];
+?>

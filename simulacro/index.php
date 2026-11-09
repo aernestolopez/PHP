@@ -1,9 +1,6 @@
 <?php
 require_once("datos.php");
 require_once("funciones.php");
-require_once("procesar.php");
-require_once("resumen.php");
-require_once("error.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
