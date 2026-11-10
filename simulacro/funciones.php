@@ -32,7 +32,7 @@ foreach($productos as $producto){
 
 //entero o positivo
 function validarUnidades($cantPedido){
-    if(!is_int($cantPedido) && $cantPedido <= 0){
+    if(!is_int($cantPedido) && $cantPedido <= 0){ // o ctype_digit
         return null;
     }else{
         return $cantPedido;

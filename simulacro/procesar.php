@@ -10,12 +10,12 @@ if($_SERVER["REQUEST_METHOD"] !=="POST"){
 
 if(empty($_POST["tipoUsuario"]) || empty($_POST["selectProducto"]) || empty($_POST["cantidad"])){
     $mensaje = "Faltan datos";
-     header("Location:error.php?mensaje= ".$mensaje);
+     header("Location:error.php?mensaje= ".urlencode($mensaje));
      exit;
 }
-    $usuario = $_POST["tipoUsuario"];
-    $productoSelect = $_POST["selectProducto"];
-    $cantidad = $_POST["cantidad"];
+    $usuario = strtolower(trim($_POST["tipoUsuario"]));
+    $productoSelect = strtoupper($_POST["selectProducto"]);
+    $cantidad = trim($_POST["cantidad"]);
 
     $producto = buscarProductos($productos, $productoSelect);
     if($producto === null){
@@ -62,6 +62,6 @@ if(empty($_POST["tipoUsuario"]) || empty($_POST["selectProducto"]) || empty($_PO
 
     print_r($pedidoProcesado);
 
-    header("Location:resumen.php?codigo=".$producto["codigo"] . "&cantidad=".$cantidadSanitizada . "&tipoCliente=" . $usuario);
+    header("Location:resumen.php?codigo=". urlencode($producto["codigo"]) . "&cantidad=". urldecode($cantidadSanitizada) . "&tipoCliente=" . urldecode($usuario));
     exit;
     ?>
