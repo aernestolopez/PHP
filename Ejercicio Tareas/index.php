@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION["tareas"] = ["Repasar PHP" =>1, "Hacer ejercicio de sesione" => 2, "Estudiar arrays" => 3];
+
 ?>
 
 <!DOCTYPE html>
@@ -26,17 +27,14 @@ $_SESSION["tareas"] = ["Repasar PHP" =>1, "Hacer ejercicio de sesione" => 2, "Es
 <br/> <br/>
 <table border="1" cellpadding="5" cellspacing="0">
     <thead>
-        <tr>
-            <?php if(!empty($_SESSION["tareas"])):?>
-                
+        <tr> 
             <th>#</th>
             <th>Tarea</th>
             <th>Acción</th>
-            
-            <?php endif?>
         </tr>
     </thead>
     <tbody>
+        <?php if(!empty($_SESSION["tareas"])):?>
         <?php foreach( $_SESSION["tareas"] as $tarea => $id):?>
         <tr>
             <td><?php echo $id?></td>
@@ -44,6 +42,11 @@ $_SESSION["tareas"] = ["Repasar PHP" =>1, "Hacer ejercicio de sesione" => 2, "Es
             <td><button type="button" id="eliminarUno">Eliminar</button></td>
         </tr>
         <?php endforeach?>
+        <?php else:?>
+            <tr>
+            <td colspan="3">No hay tareas que mostrar</td>
+            <?php endif?>
+            </tr>
     </tbody>
 </table>
 <br>
