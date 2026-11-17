@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["tareas"] = ["tarea 1" =>1, "tarea 2" => 2, "tarea 3" => 3];
+$_SESSION["tareas"] = ["Repasar PHP" =>1, "Hacer ejercicio de sesione" => 2, "Estudiar arrays" => 3];
 ?>
 
 <!DOCTYPE html>
