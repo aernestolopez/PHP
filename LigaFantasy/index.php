@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         }if(!$repetido){
             $_SESSION['plantilla'] [] = ['dorsal' => $dorsal, "nombre" =>$nombre, "posicion" => $posicion, "puntos" => $puntos];
         }
-                    header("Location: " . $_SERVER['PHP_SELF'], );
+            header("Location: " . $_SERVER['PHP_SELF'], );
                exit;
     }
 }
@@ -67,11 +67,7 @@ if (isset($_GET["ordenMenosPuntos"])) {
 }
 
 if (isset($_GET["reset"])) {
-    $ordenSeleccionado = $_GET["reset"]; 
-    if(isset($_SESSION['plantilla'])){
-        unset($_SESSION['plantilla']);
-    }
-
+    session_destroy();
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
