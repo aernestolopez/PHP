@@ -52,12 +52,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
 
 }
-if (isset($_GET['buscar'])) {
+/*if (isset($_GET['buscar'])) {
     $textBusqueda = trim($_GET['textoBusqueda'] ?? '');
     if ($textBusqueda !== '') {
         $tareasMostrar = busqueda($textBusqueda);
     }
-}
+}*/
+
+$busqueda = $_GET['textoBusqueda'] ?? '';
+$tareasMostradas = filtrarTareas($_SESSION['tareas'], $busqueda);
 ?>
 
 <!DOCTYPE html>
@@ -88,36 +91,33 @@ if (isset($_GET['buscar'])) {
 <button type="submit" name="buscar" id="filtrar">Filtrar</button>
 </form>
 <br/> <br/>
-<table border="1" cellpadding="5" cellspacing="0">
-    <thead>
-        <tr> 
+<table border="1" cellpadding="6" cellspacing="0">
+        <tr>
             <th>#</th>
             <th>Tarea</th>
             <th>Acción</th>
         </tr>
-    </thead>
-    <tbody>
-        <?php if(!empty($_SESSION["tareas"])):?>
-           <?php $contador=1; ?> 
-        <?php foreach( $_SESSION["tareas"] as $indice => $tarea):?>
-            
-        <tr>
-            <td><?php echo $contador?></td>
-            <td><?php echo $tarea ?></td>
-            <form action="index.php" method="POST">
-            <td><button type="submit" name="eliminar" value="<?php echo $indice?>">Eliminar</button></td>
-            </form>
-        </tr>
-        <?php $contador++ ?>
-        <?php endforeach?>
-        <?php else:?>
+
+        <?php if (empty($tareasMostradas)): ?>
             <tr>
-            <td colspan="3">No hay tareas que mostrar</td>
+                <td colspan="3">No hay tareas que mostrar.</td>
             </tr>
-            <?php endif?>
-            
-    </tbody>
-</table>
+        <?php else: ?>
+            <?php foreach ($tareasMostradas as $indice => $texto): ?>
+                <tr>
+                    <td><?= $indice + 1 ?></td>
+                    <td><?= htmlspecialchars($texto) ?></td>
+                    <td>
+                        <form method="POST" action="index.php">
+                            <!--<input type="hidden" name="indice" value="<?= $indice ?>">-->
+                            <button type="submit" name="eliminar" value="<?php echo $indice; ?>">Eliminar  </button>
+                            <!--<button type="submit" name="eliminar">Eliminar</button>-->
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </table>
 <br>
     <?php if (!empty($error)): ?>
         <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
