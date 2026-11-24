@@ -50,7 +50,7 @@ if ($busqueda_nombre !== '' || $busqueda_posición !== '') {
         <input type="text" name="nombre" value="<?php echo htmlspecialchars($busqueda_nombre); ?>" placeholder="Ej. Betis">
         
         <label>Buscar por posición:</label>
-        <input type="number" name="posicion" value="<?php echo htmlspecialchars($busqueda_posición); ?>" min="1" placeholder="Ej. 3">
+        <input type="number" name="posicion" value="<?php echo htmlspecialchars($busqueda_posicion); ?>" min="1" placeholder="Ej. 3">
         
         <button type="submit">Buscar</button>
         <a href="?">Reiniciar</a>
