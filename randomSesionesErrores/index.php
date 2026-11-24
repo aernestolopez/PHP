@@ -28,7 +28,7 @@ if(isset($_POST["ordenar"])){
         exit;
     }
 
-}catch(Exception $exception){
+}catch(Throwable $exception){
     echo $exception -> getMessage();
 }
 
