@@ -9,11 +9,11 @@ $clasificacion = [
 ];
 
 $busqueda_nombre = isset($_GET['nombre']) ? trim($_GET['nombre']) : '';
-$busqueda_posición = isset($_GET['posicion']) ? trim($_GET['posicion']) : '';
+$busqueda_posicion = isset($_GET['posicion']) ? trim($_GET['posicion']) : '';
 
 $resultados = $clasificacion;
 
-if ($busqueda_nombre !== '' || $busqueda_posición !== '') {
+if ($busqueda_nombre !== '' || $busqueda_posicion !== '') {
     $resultados = [];
     foreach ($clasificacion as $posicion => $equipo) {
         $coincide_nombre = true;
@@ -25,8 +25,8 @@ if ($busqueda_nombre !== '' || $busqueda_posición !== '') {
         }
 
     
-        if ($busqueda_posición !== '') {
-            $coincide_posicion = ($posicion == (int)$busqueda_posición);
+        if ($busqueda_posicion !== '') {
+            $coincide_posicion = ($posicion == (int)$busqueda_posicion);
         }
 
        
