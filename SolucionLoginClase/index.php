@@ -90,8 +90,8 @@ $usuario_en_cookie = $_COOKIE['usuario_recordado'] ?? '';
         ?>
     </p>
 
-    <!--<a href="?accion=salir">Cerrar sesión</a> -->
-    <a href="repaso_sesiones.php?accion=salir">Cerrar sesión</a> 
+    <a href="?accion=salir">Cerrar sesión</a>
+    <!--<a href="repaso_sesiones.php?accion=salir">Cerrar sesión</a> -->
 
     <!--<a href="logout.php">Cerrar sesión</a> 
         Podiamos crear un archivo externo llamado logout.php y en él poner lo siguiente:
