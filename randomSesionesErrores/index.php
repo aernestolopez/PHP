@@ -12,6 +12,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     }
     $name= $_POST["nameStudent"];
     $lastname = $_POST["lastname"];
+
+    foreach ($_SESSION['alumnosCal'] as $registro) {
+        if(strcasecmp($registro['nombre'], $name) === 0 && strcasecmp($registro["apellidos"], $lastname) ===0){
+            throw new Exception("El alumno '{$name} ya existe");
+        }
+    }
     $notaRand = random_int(0, 10);
     $_SESSION["alumnosCal"] []= [ "nombre" => $name, "apellidos" => $lastname, "nota" =>$notaRand ];
     header("Location: " . $_SERVER['PHP_SELF']);
