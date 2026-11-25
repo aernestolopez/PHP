@@ -13,6 +13,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $name= $_POST["nameStudent"];
     $lastname = $_POST["lastname"];
 
+
+    //$ordenado = usort($_SESSION['notas'], function ($a, $b){ return $b['nota'] <=> $a['nota'];});  if(!ordenado){throw new Exception("Error en la ordenacion")}
     foreach ($_SESSION['alumnosCal'] as $registro) {
         if(strcasecmp($registro['nombre'], $name) === 0 && strcasecmp($registro["apellidos"], $lastname) ===0){
             throw new Exception("El alumno '{$name} ya existe");
