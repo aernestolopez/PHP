@@ -1,37 +1,44 @@
 <?php
 session_start();
-
-$_SESSION["alumnosCal"] = [];
-
-
-if($_SERVER["REQUEST_METHOD"] === "POST"){
+if (!isset($_SESSION["alumnosCal"])) {
+    $_SESSION["alumnosCal"] = [];
+}
+$error='';
 try{
-    if(empty(trim($_POST["nameStudent"])) || empty(trim($_POST["lastname"]))){
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    if(isset($_POST["añadir"])){
+        if(empty(trim($_POST["nameStudent"])) || empty(trim($_POST["lastname"]))){
         throw new Exception("Todos los campos deben estar completos");
     }
     $name= $_POST["nameStudent"];
-    $lastname = $_POST["nameStudent"];
-
-    if(isset($_POST["añadir"])){
-    $_S
-
+    $lastname = $_POST["lastname"];
+    $notaRand = random_int(0, 10);
+    $_SESSION["alumnosCal"] []= [ "nombre" => $name, "apellidos" => $lastname, "nota" =>$notaRand ];
+    header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
     }
 
 
-if(isset($_POST["ordenar"])){
-
-}
+        if (isset($_POST["ordenar"])) {
+            if(empty($_SESSION["alumnosCal"])){
+        throw new Exception("Debes añadir alumnos");
+    }
+            usort($_SESSION["alumnosCal"], function($a, $b) {
+                return $b['nota'] <=> $a['nota'];
+            });
+                header("Location: " . $_SERVER['PHP_SELF']);
+            exit;
+        }
 
     if(isset($_POST["vaciar"])){
         session_destroy();
         header("Location:" . $_SERVER['PHP_SELF']);
         exit;
     }
-
-}catch(Throwable $exception){
-    echo $exception -> getMessage();
 }
 
+}catch(Throwable $exception){
+    $error = $exception -> getMessage();
 }
 ?>
 
@@ -47,6 +54,8 @@ if(isset($_POST["ordenar"])){
     <?php 
     echo "Alumnos registrados: ". count($_SESSION["alumnosCal"]);
     ?>
+
+    <p><?php echo $error ?></p>
     <form action="" method="POST">
     <p>
     <label for="nombre">Nombre:</label>
@@ -64,7 +73,6 @@ if(isset($_POST["ordenar"])){
     </p>
     </form>
 
-    <table>
         <table border="0" cellpadding="6" cellspacing="0">
         <tr>
             <th>#</th>
@@ -72,7 +80,24 @@ if(isset($_POST["ordenar"])){
             <th>Apellidos</th>
             <th>Calificación</th>
         </tr>
-    </table>
+        <?php if(!empty($_SESSION["alumnosCal"])):?>
+        <tbody>
+            <?php foreach ($_SESSION["alumnosCal"] as $indice => $alumno):?>
+            <tr>
+                
+                <td><?php echo $indice+1?></td>
+                <td><?php echo $alumno["nombre"]?></td>
+                <td><?php echo $alumno["apellidos"]?></td>
+                <td><?php echo $alumno["nota"]?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+        <?php else: ?>
+             <tr>
+                
+                <td colspan="4">Introduce datos para añadir alumnos</td>
+                </tr>
+        <?php endif;?>
     </table>
 </body>
 </html>

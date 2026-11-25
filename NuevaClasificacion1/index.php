@@ -18,6 +18,8 @@ function inicializarLiga() {
         ['local' => 'Real Sociedad',   'goles_local' => 0, 'visitante' => 'Real Betis',    'goles_visitante' => 3]
     ];
 
+    $_SESSION['partidos'] = [];
+
     foreach ($partidosIniciales as $partido) {
         procesarPartido($partido['local'], $partido['goles_local'], $partido['visitante'], $partido['goles_visitante']);
     }
@@ -60,6 +62,13 @@ function procesarPartido($local, $golesLocal, $visitante, $golesVisitante) {
         $_SESSION['equipos'][$local]['puntos'] += 1;
         $_SESSION['equipos'][$visitante]['puntos'] += 1;
     }
+
+    $_SESSION['partidos'][] = [
+    'local'           => $local,
+    'goles_local'     => $golesLocal,
+    'visitante'       => $visitante,
+    'goles_visitante' => $golesVisitante
+];
 }
 
 $mensajeError = '';
@@ -100,6 +109,7 @@ try {
             foreach ($_SESSION['equipos'] as $nombre => $datos) {
                 $_SESSION['equipos'][$nombre] = ['puntos' => 0, 'gf' => 0];
             }
+            $_SESSION['partidos'] = [];
             $mensajeExito = "Se han borrado todos los resultados. Todos los equipos están a 0.";
         }
     }
